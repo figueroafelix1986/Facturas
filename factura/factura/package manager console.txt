@@ -1,0 +1,7 @@
+Add-Migration AddColumnApellidos_Tcp
+Update-Database
+
+Remove-Migration
+
+
+
