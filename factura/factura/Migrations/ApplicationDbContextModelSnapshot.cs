@@ -276,12 +276,12 @@ namespace factura.Migrations
                         new
                         {
                             Id = 1,
-                            Apellidos = "Cruz Rodríguez",
-                            Carnet = "62121200167",
+                            Apellidos = "Cruz ",
+                            Carnet = "62121",
                             Codigo = "631",
-                            NIT = "8100-7612-6212-1032. Playa",
-                            Nombre = "Fidel",
-                            NumLicencia = "C364483"
+                            NIT = "8100-7612-. Playa",
+                            Nombre = "DEKEKEE",
+                            NumLicencia = "C364"
                         });
                 });
 

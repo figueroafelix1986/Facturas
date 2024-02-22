@@ -9,8 +9,8 @@ using factura.Commons;
 namespace factura.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240219033630_AddBaseDeDatos")]
-    partial class AddBaseDeDatos
+    [Migration("20240221013513_AddBaseDat")]
+    partial class AddBaseDat
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -278,12 +278,12 @@ namespace factura.Migrations
                         new
                         {
                             Id = 1,
-                            Apellidos = "Cruz Rodríguez",
-                            Carnet = "62121200167",
+                            Apellidos = "Cruz ",
+                            Carnet = "62121",
                             Codigo = "631",
-                            NIT = "8100-7612-6212-1032. Playa",
-                            Nombre = "Fidel",
-                            NumLicencia = "C364483"
+                            NIT = "8100-7612-. Playa",
+                            Nombre = "DEKEKEE",
+                            NumLicencia = "C364"
                         });
                 });
 

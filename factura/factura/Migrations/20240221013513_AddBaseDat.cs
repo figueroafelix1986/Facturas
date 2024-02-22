@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace factura.Migrations
 {
-    public partial class AddBaseDeDatos : Migration
+    public partial class AddBaseDat : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -228,7 +228,7 @@ namespace factura.Migrations
             migrationBuilder.InsertData(
                 table: "Tcps",
                 columns: new[] { "Id", "Apellidos", "Carnet", "Codigo", "NIT", "Nombre", "NumLicencia" },
-                values: new object[] { 1, "Cruz Rodríguez", "62121200167", "631", "8100-7612-6212-1032. Playa", "Fidel", "C364483" });
+                values: new object[] { 1, "Cruz ", "62121", "631", "8100-7612-. Playa", "DEKEKEE", "C364" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contrato_EmpresaId",

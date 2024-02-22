@@ -43,7 +43,7 @@ namespace factura.Views
 
         private void AbrirVentanaCotiza()
         {
-            var miFormulario = new AddCotizacion(); // Reemplaza "MiFormulario" con el nombre de tu formulario
+            var miFormulario = new AddCotzaServi(); // Reemplaza "MiFormulario" con el nombre de tu formulario
             miFormulario.ShowDialog(this);
         }
 

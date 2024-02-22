@@ -167,9 +167,9 @@
     <Compile Include="Commons\ApplicationDbContext.cs" />
     <Compile Include="Commons\Comboblista.cs" />
     <Compile Include="Commons\Validator.cs" />
-    <Compile Include="Migrations\20240219033630_AddBaseDeDatos.cs" />
-    <Compile Include="Migrations\20240219033630_AddBaseDeDatos.designer.cs">
-      <DependentUpon>20240219033630_AddBaseDeDatos.cs</DependentUpon>
+    <Compile Include="Migrations\20240221013513_AddBaseDat.cs" />
+    <Compile Include="Migrations\20240221013513_AddBaseDat.designer.cs">
+      <DependentUpon>20240221013513_AddBaseDat.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\Contratos\ContratoModel.cs" />
@@ -201,6 +201,12 @@
     </Compile>
     <Compile Include="Views\AddCotizacion.Designer.cs">
       <DependentUpon>AddCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCotzaServi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddCotzaServi.Designer.cs">
+      <DependentUpon>AddCotzaServi.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NTipos_servicios.cs">
       <SubType>Form</SubType>
@@ -240,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddCotizacion.resx">
       <DependentUpon>AddCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddCotzaServi.resx">
+      <DependentUpon>AddCotzaServi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NTipos_servicios.resx">
       <DependentUpon>NTipos_servicios.cs</DependentUpon>

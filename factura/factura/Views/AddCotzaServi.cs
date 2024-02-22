@@ -1,5 +1,4 @@
 ﻿using factura.Commons;
-using factura.Services.Contratos;
 using factura.Services.Nomencladores;
 using factura.styles;
 using System;
@@ -14,27 +13,30 @@ using System.Windows.Forms;
 
 namespace factura.Views
 {
-    public partial class AddCotizacion : Form
+    public partial class AddCotzaServi : Form
     {
         private readonly EmpresaService empresService;
         private readonly ServiciosService serveService;
-        private readonly Comboblista combolist;
-
-        public AddCotizacion()
+        public AddCotzaServi()
         {
             InitializeComponent();
             empresService = new EmpresaService();
             serveService = new ServiciosService();
-            combolist = new Comboblista();
         }
 
-        private void AddCotizacion_Load(object sender, EventArgs e)
+        private void AddCotzaServi_Load(object sender, EventArgs e)
         {
             styleservice();
             ListarCombox();
+
+
         }
 
-        //Aqui estan todos los Styles
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void styleservice()
         {
 
@@ -48,34 +50,13 @@ namespace factura.Views
             //Para los botones de aceptar
             StylesBoton styles = new StylesBoton();
             styles.FormatAcceptButton(this);
-
-
         }
 
-
-        private void Aceptar_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
-
-        //Aqui estan listados los combobox
         private void ListarCombox()
         {
             //Lista el combobox
             Comboblista.ConfigurarComboBoxEmpr(comboBox1, empresService);
             Comboblista.ConfigurarComboBoxServ(comboBox2, serveService);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
