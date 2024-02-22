@@ -23,5 +23,9 @@ namespace factura.Models.Cotizacion
         public int EstadoCotizId { get; set; }
         public EstadosCotizacionModel EstadoCotiz { get; set; }
 
+        [ForeignKey("CotizacionDetalleId")]
+        public int CotizacionDetalleId { get; set; }
+        public CotizacionDetalleModel Detalles { get; set; }
+
     }
 }

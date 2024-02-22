@@ -32,6 +32,22 @@ namespace factura.Commons
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+            modelBuilder.Entity<ServicioCotizacion>()
+        .HasKey(sc => new { sc.ServicioId, sc.CotizacionDetalleId });
+
+            modelBuilder.Entity<ServicioCotizacion>()
+                .HasOne(sc => sc.Servicio)
+                .WithMany(s => s.Cotizaciones)
+                .HasForeignKey(sc => sc.ServicioId);
+
+            modelBuilder.Entity<ServicioCotizacion>()
+                .HasOne(sc => sc.CotizacionDetalle)
+                .WithMany(cd => cd.Servicios)
+                .HasForeignKey(sc => sc.CotizacionDetalleId);
+
+
             modelBuilder.Entity<TcpModel>().HasData(
                 new TcpModel { Id = 1, 
                     Nombre = "DEKEKEE", 

@@ -24,5 +24,15 @@ namespace factura.Services.Cotizacion
 
             return cotizatoList;
         }
+
+        public bool InsertCotizacion(CotizacioListModel cotizacioListModel) 
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                context.Cotizacion.Add(cotizacioListModel); 
+                return context.SaveChanges() > 0;
+                 
+            }
+        }
     }
 }

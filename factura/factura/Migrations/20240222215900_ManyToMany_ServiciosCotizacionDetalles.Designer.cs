@@ -9,8 +9,8 @@ using factura.Commons;
 namespace factura.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240221013513_AddBaseDat")]
-    partial class AddBaseDat
+    [Migration("20240222215900_ManyToMany_ServiciosCotizacionDetalles")]
+    partial class ManyToMany_ServiciosCotizacionDetalles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,16 +97,26 @@ namespace factura.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ServicioTCPId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CotizacionId");
 
-                    b.HasIndex("ServicioTCPId");
-
                     b.ToTable("CotizacionServ");
+                });
+
+            modelBuilder.Entity("factura.Models.Cotizacion.ServicioCotizacion", b =>
+                {
+                    b.Property<int>("ServicioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CotizacionDetalleId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ServicioId", "CotizacionDetalleId");
+
+                    b.HasIndex("CotizacionDetalleId");
+
+                    b.ToTable("ServicioCotizacion");
                 });
 
             modelBuilder.Entity("factura.Models.Nomencladores.CuentasModel", b =>
@@ -318,10 +328,19 @@ namespace factura.Migrations
                         .HasForeignKey("CotizacionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.HasOne("factura.Models.Nomencladores.ServiciosModel", "ServicioTCP")
-                        .WithMany()
-                        .HasForeignKey("ServicioTCPId")
+            modelBuilder.Entity("factura.Models.Cotizacion.ServicioCotizacion", b =>
+                {
+                    b.HasOne("factura.Models.Cotizacion.CotizacionDetalleModel", "CotizacionDetalle")
+                        .WithMany("Servicios")
+                        .HasForeignKey("CotizacionDetalleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("factura.Models.Nomencladores.ServiciosModel", "Servicio")
+                        .WithMany("Cotizaciones")
+                        .HasForeignKey("ServicioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

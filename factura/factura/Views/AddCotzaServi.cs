@@ -1,4 +1,7 @@
 ﻿using factura.Commons;
+using factura.Models.Cotizacion;
+using factura.Models.Nomencladores;
+using factura.Services.Cotizacion;
 using factura.Services.Nomencladores;
 using factura.styles;
 using System;
@@ -17,6 +20,8 @@ namespace factura.Views
     {
         private readonly EmpresaService empresService;
         private readonly ServiciosService serveService;
+
+        private CotizacioListModel cotizacion = new CotizacioListModel();
         public AddCotzaServi()
         {
             InitializeComponent();
@@ -57,6 +62,32 @@ namespace factura.Views
             //Lista el combobox
             Comboblista.ConfigurarComboBoxEmpr(comboBox1, empresService);
             Comboblista.ConfigurarComboBoxServ(comboBox2, serveService);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //ponle a cotizacion todos los datos que nesecitas
+            cotizacion.Empresa = (EmpresaModel)comboBox1.SelectedItem;
+           // sigue tu q no estoy pa eso jj
+
+
+            //ahhora coge todos los servicos del dataGridView1 y guardalos en la lista de servicios
+            //no me acuredo ni carajo como se cogen los datos ..dataGridView1.DataSource;
+
+            List<ServiciosModel> servicios= new List<ServiciosModel>();
+
+            foreach (var servicio in servicios)
+            {
+                cotizacion.Detalles.AddServicio(servicio);
+            }
+
+            new CotizacionListService().InsertCotizacion(cotizacion);
+           
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace factura.Migrations
 {
-    public partial class AddBaseDat : Migration
+    public partial class ManyToMany_ServiciosCotizacionDetalles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -180,8 +180,7 @@ namespace factura.Migrations
                     Cantidad = table.Column<decimal>(nullable: false),
                     Precio = table.Column<decimal>(nullable: false),
                     Observa = table.Column<string>(nullable: true),
-                    CotizacionId = table.Column<int>(nullable: false),
-                    ServicioTCPId = table.Column<int>(nullable: false)
+                    CotizacionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,9 +191,27 @@ namespace factura.Migrations
                         principalTable: "Cotizacion",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServicioCotizacion",
+                columns: table => new
+                {
+                    ServicioId = table.Column<int>(nullable: false),
+                    CotizacionDetalleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServicioCotizacion", x => new { x.ServicioId, x.CotizacionDetalleId });
                     table.ForeignKey(
-                        name: "FK_CotizacionServ_ServicioTCP_ServicioTCPId",
-                        column: x => x.ServicioTCPId,
+                        name: "FK_ServicioCotizacion_CotizacionServ_CotizacionDetalleId",
+                        column: x => x.CotizacionDetalleId,
+                        principalTable: "CotizacionServ",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ServicioCotizacion_ServicioTCP_ServicioId",
+                        column: x => x.ServicioId,
                         principalTable: "ServicioTCP",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -251,11 +268,6 @@ namespace factura.Migrations
                 column: "CotizacionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CotizacionServ_ServicioTCPId",
-                table: "CotizacionServ",
-                column: "ServicioTCPId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Cuentas_EmpresaId",
                 table: "Cuentas",
                 column: "EmpresaId");
@@ -269,6 +281,11 @@ namespace factura.Migrations
                 name: "IX_Cuentas_TcpId",
                 table: "Cuentas",
                 column: "TcpId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ServicioCotizacion_CotizacionDetalleId",
+                table: "ServicioCotizacion",
+                column: "CotizacionDetalleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -277,22 +294,25 @@ namespace factura.Migrations
                 name: "Contrato");
 
             migrationBuilder.DropTable(
-                name: "CotizacionServ");
-
-            migrationBuilder.DropTable(
                 name: "Cuentas");
 
             migrationBuilder.DropTable(
-                name: "Cotizacion");
-
-            migrationBuilder.DropTable(
-                name: "ServicioTCP");
+                name: "ServicioCotizacion");
 
             migrationBuilder.DropTable(
                 name: "Moneda");
 
             migrationBuilder.DropTable(
                 name: "Tcps");
+
+            migrationBuilder.DropTable(
+                name: "CotizacionServ");
+
+            migrationBuilder.DropTable(
+                name: "ServicioTCP");
+
+            migrationBuilder.DropTable(
+                name: "Cotizacion");
 
             migrationBuilder.DropTable(
                 name: "Empresas");

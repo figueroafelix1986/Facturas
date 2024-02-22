@@ -17,9 +17,23 @@ namespace factura.Models.Cotizacion
         //[ForeignKey("EmpresaCotServ")]
         public int CotizacionId { get; set; }
         public CotizacioListModel Cotizacion { get; set; }
-        //[ForeignKey("ServiCotiza")]
-        public int ServicioTCPId { get; set; }
-        public ServiciosModel ServicioTCP { get; set; }
+
+
+        public ICollection<ServicioCotizacion> Servicios { get; set; } = new List<ServicioCotizacion>();
+
+        public void AddServicio(ServiciosModel servicio) 
+        {
+            if (servicio != null) 
+            {
+                Servicios.Add(new ServicioCotizacion 
+                {
+                 Servicio = servicio,
+                 ServicioId = servicio.Id,
+                 CotizacionDetalle = this,
+                 CotizacionDetalleId = Id
+                });
+            }
+        }
 
     }
 }

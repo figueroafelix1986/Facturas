@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCotzaServi));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.fechacotiz = new System.Windows.Forms.Label();
@@ -49,7 +50,7 @@
             this.precio = new System.Windows.Forms.Label();
             this.cantidad = new System.Windows.Forms.Label();
             this.servicios = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -83,6 +84,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cotización";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(20, 227);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1055, 146);
+            this.richTextBox1.TabIndex = 30;
+            this.richTextBox1.Text = "";
             // 
             // label1
             // 
@@ -212,6 +222,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1013, 208);
             this.dataGridView1.TabIndex = 28;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // textBox2
             // 
@@ -271,20 +282,22 @@
             this.servicios.TabIndex = 22;
             this.servicios.Text = "Servicios";
             // 
-            // richTextBox1
+            // button2
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(20, 227);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1055, 146);
-            this.richTextBox1.TabIndex = 30;
-            this.richTextBox1.Text = "";
+            this.button2.Location = new System.Drawing.Point(878, 459);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 38);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Aceptar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddCotzaServi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 509);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.tabControl1);
             this.Name = "AddCotzaServi";
             this.Text = "AddCotzaServi";
@@ -322,5 +335,6 @@
         private System.Windows.Forms.Label cantidad;
         private System.Windows.Forms.Label servicios;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button2;
     }
 }

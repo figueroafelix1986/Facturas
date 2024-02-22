@@ -1,4 +1,5 @@
-﻿using System;
+﻿using factura.Models.Cotizacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace factura.Models.Nomencladores
     {
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
+
+        public ICollection<ServicioCotizacion> Cotizaciones { get; set; }
     }
 }
