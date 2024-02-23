@@ -209,9 +209,9 @@
             this.label3.Location = new System.Drawing.Point(5, 87);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 16);
+            this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 29;
-            this.label3.Text = "Observacón";
+            this.label3.Text = "Observación";
             // 
             // dataGridView1
             // 
@@ -251,6 +251,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(703, 32);
             this.comboBox2.TabIndex = 25;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // precio
             // 

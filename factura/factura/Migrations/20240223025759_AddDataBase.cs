@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace factura.Migrations
 {
-    public partial class ManyToMany_ServiciosCotizacionDetalles : Migration
+    public partial class AddDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -117,7 +117,8 @@ namespace factura.Migrations
                     Precio = table.Column<decimal>(nullable: false),
                     observa = table.Column<string>(nullable: true),
                     EmpresaId = table.Column<int>(nullable: false),
-                    EstadoCotizId = table.Column<int>(nullable: false)
+                    EstadoCotizId = table.Column<int>(nullable: false),
+                    CotizacionDetalleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -265,7 +266,8 @@ namespace factura.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_CotizacionServ_CotizacionId",
                 table: "CotizacionServ",
-                column: "CotizacionId");
+                column: "CotizacionId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cuentas_EmpresaId",

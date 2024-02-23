@@ -13,6 +13,6 @@ namespace factura.Models.Cotizacion
         public ServiciosModel Servicio { get; set; }
 
         public int CotizacionDetalleId { get; set; }
-        public CotizacionDetalleModel CotizacionDetalle { get; set; }
+        public CotizacionDetalleModel CotizacionServ { get; set; }
     }
 }

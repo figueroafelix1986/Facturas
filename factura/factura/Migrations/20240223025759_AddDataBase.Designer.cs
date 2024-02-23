@@ -9,8 +9,8 @@ using factura.Commons;
 namespace factura.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240222215900_ManyToMany_ServiciosCotizacionDetalles")]
-    partial class ManyToMany_ServiciosCotizacionDetalles
+    [Migration("20240223025759_AddDataBase")]
+    partial class AddDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,10 +46,39 @@ namespace factura.Migrations
                     b.ToTable("Contrato");
                 });
 
-            modelBuilder.Entity("factura.Models.Cotizacion.CotizacioListModel", b =>
+            modelBuilder.Entity("factura.Models.Cotizacion.CotizacionDetalleModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CotizacionId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Observa")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CotizacionId")
+                        .IsUnique();
+
+                    b.ToTable("CotizacionServ");
+                });
+
+            modelBuilder.Entity("factura.Models.Cotizacion.CotizacionModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CotizacionDetalleId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("EmpresaId")
@@ -77,31 +106,6 @@ namespace factura.Migrations
                     b.HasIndex("EstadoCotizId");
 
                     b.ToTable("Cotizacion");
-                });
-
-            modelBuilder.Entity("factura.Models.Cotizacion.CotizacionDetalleModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CotizacionId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Observa")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CotizacionId");
-
-                    b.ToTable("CotizacionServ");
                 });
 
             modelBuilder.Entity("factura.Models.Cotizacion.ServicioCotizacion", b =>
@@ -306,7 +310,16 @@ namespace factura.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("factura.Models.Cotizacion.CotizacioListModel", b =>
+            modelBuilder.Entity("factura.Models.Cotizacion.CotizacionDetalleModel", b =>
+                {
+                    b.HasOne("factura.Models.Cotizacion.CotizacionModel", "Cotizacion")
+                        .WithOne("CotizacionServ")
+                        .HasForeignKey("factura.Models.Cotizacion.CotizacionDetalleModel", "CotizacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("factura.Models.Cotizacion.CotizacionModel", b =>
                 {
                     b.HasOne("factura.Models.Nomencladores.EmpresaModel", "Empresa")
                         .WithMany()
@@ -321,18 +334,9 @@ namespace factura.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("factura.Models.Cotizacion.CotizacionDetalleModel", b =>
-                {
-                    b.HasOne("factura.Models.Cotizacion.CotizacioListModel", "Cotizacion")
-                        .WithMany()
-                        .HasForeignKey("CotizacionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("factura.Models.Cotizacion.ServicioCotizacion", b =>
                 {
-                    b.HasOne("factura.Models.Cotizacion.CotizacionDetalleModel", "CotizacionDetalle")
+                    b.HasOne("factura.Models.Cotizacion.CotizacionDetalleModel", "CotizacionServ")
                         .WithMany("Servicios")
                         .HasForeignKey("CotizacionDetalleId")
                         .OnDelete(DeleteBehavior.Cascade)

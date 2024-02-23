@@ -169,9 +169,9 @@
     <Compile Include="Commons\ApplicationDbContext.cs" />
     <Compile Include="Commons\Comboblista.cs" />
     <Compile Include="Commons\Validator.cs" />
-    <Compile Include="Migrations\20240222215900_ManyToMany_ServiciosCotizacionDetalles.cs" />
-    <Compile Include="Migrations\20240222215900_ManyToMany_ServiciosCotizacionDetalles.designer.cs">
-      <DependentUpon>20240222215900_ManyToMany_ServiciosCotizacionDetalles.cs</DependentUpon>
+    <Compile Include="Migrations\20240223025759_AddDataBase.cs" />
+    <Compile Include="Migrations\20240223025759_AddDataBase.designer.cs">
+      <DependentUpon>20240223025759_AddDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\Contratos\ContratoModel.cs" />

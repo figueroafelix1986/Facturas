@@ -16,7 +16,7 @@ namespace factura.Models.Cotizacion
         public string Observa { get; set; }
         //[ForeignKey("EmpresaCotServ")]
         public int CotizacionId { get; set; }
-        public CotizacioListModel Cotizacion { get; set; }
+        public CotizacionModel Cotizacion { get; set; }
 
 
         public ICollection<ServicioCotizacion> Servicios { get; set; } = new List<ServicioCotizacion>();
@@ -29,7 +29,7 @@ namespace factura.Models.Cotizacion
                 {
                  Servicio = servicio,
                  ServicioId = servicio.Id,
-                 CotizacionDetalle = this,
+                 CotizacionServ = this,
                  CotizacionDetalleId = Id
                 });
             }

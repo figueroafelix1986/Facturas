@@ -12,9 +12,9 @@ namespace factura.Services.Cotizacion
     public class CotizacionListService
     {
 
-        public List<CotizacioListModel> GetCotizatoList()
+        public List<CotizacionModel> GetCotizatoList()
         {
-            List<CotizacioListModel> cotizatoList = new List<CotizacioListModel>();
+            List<CotizacionModel> cotizatoList = new List<CotizacionModel>();
 
 
             using (var context = new ApplicationDbContext())
@@ -25,7 +25,7 @@ namespace factura.Services.Cotizacion
             return cotizatoList;
         }
 
-        public bool InsertCotizacion(CotizacioListModel cotizacioListModel) 
+        public bool InsertCotizacion(CotizacionModel cotizacioListModel) 
         {
             using (var context = new ApplicationDbContext())
             {

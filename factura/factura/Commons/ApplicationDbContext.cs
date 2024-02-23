@@ -18,7 +18,7 @@ namespace factura.Commons
         public DbSet<MonedaModel> Moneda { get; set; }
         public DbSet<ServiciosModel> ServicioTCP { get; set; }
         public DbSet<ContratoModel> Contrato { get; set; }
-        public DbSet<CotizacioListModel> Cotizacion { get; set; }
+        public DbSet<CotizacionModel> Cotizacion { get; set; }
         public DbSet<CotizacionDetalleModel> CotizacionServ { get; set; }
         public DbSet<EstadosCotizacionModel> EstadoCotiz { get; set; }
 
@@ -43,7 +43,7 @@ namespace factura.Commons
                 .HasForeignKey(sc => sc.ServicioId);
 
             modelBuilder.Entity<ServicioCotizacion>()
-                .HasOne(sc => sc.CotizacionDetalle)
+                .HasOne(sc => sc.CotizacionServ)
                 .WithMany(cd => cd.Servicios)
                 .HasForeignKey(sc => sc.CotizacionDetalleId);
 

@@ -21,7 +21,7 @@ namespace factura.Views
         private readonly EmpresaService empresService;
         private readonly ServiciosService serveService;
 
-        private CotizacioListModel cotizacion = new CotizacioListModel();
+        private CotizacionModel cotizacion = new CotizacionModel();
         public AddCotzaServi()
         {
             InitializeComponent();
@@ -33,13 +33,14 @@ namespace factura.Views
         {
             styleservice();
             ListarCombox();
+            viewGrid();
 
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.Rows.Add(comboBox2.Text,textBox5.Text,textBox2.Text,Convert.ToDecimal(textBox5.Text)* Convert.ToDecimal(textBox2.Text),textBox1.Text);
         }
 
         private void styleservice()
@@ -78,7 +79,7 @@ namespace factura.Views
 
             foreach (var servicio in servicios)
             {
-                cotizacion.Detalles.AddServicio(servicio);
+                cotizacion.CotizacionServ.AddServicio(servicio);
             }
 
             new CotizacionListService().InsertCotizacion(cotizacion);
@@ -86,6 +87,24 @@ namespace factura.Views
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void viewGrid()
+        {
+            if (dataGridView1.Columns.Count == 0)
+            {
+                dataGridView1.Columns.Add("Servicios", "Servicios");
+                dataGridView1.Columns.Add("Cantidad", "Cantidad");
+                dataGridView1.Columns.Add("Precio", "Precio");
+                dataGridView1.Columns.Add("Total", "Total");               
+                dataGridView1.Columns.Add("Observacion", "Observacion");               
+
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -22,7 +22,7 @@ namespace factura.Views
         private readonly EstadoCotizService estadoService;
         private readonly CotizacionListService cotizaciolistService;
        
-        private List<CotizacioListModel> cotizacList;
+        private List<CotizacionModel> cotizacList;
         private List<EmpresaModel> empresaList;
         private List<EstadosCotizacionModel> estadoList;
 
