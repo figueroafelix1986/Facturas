@@ -9,7 +9,7 @@ using factura.Commons;
 namespace factura.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240223025759_AddDataBase")]
+    [Migration("20240223040422_AddDataBase")]
     partial class AddDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

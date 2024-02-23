@@ -19,7 +19,9 @@ namespace factura.Views
     public partial class AddCotzaServi : Form
     {
         private readonly EmpresaService empresService;
-        private readonly ServiciosService serveService;
+        private readonly ServiciosService serveService;     
+
+        List<ServiciosModel> serverList;
 
         private CotizacionModel cotizacion = new CotizacionModel();
         public AddCotzaServi()
@@ -34,7 +36,7 @@ namespace factura.Views
             styleservice();
             ListarCombox();
             viewGrid();
-
+        
 
         }
 
@@ -106,7 +108,19 @@ namespace factura.Views
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listPrecServi();
+        }
 
+        private void listPrecServi()
+        {
+            serverList = serveService.GetServicioList();
+            var ListServicio = serverList.Where(c => c.Nombre == comboBox2.Text).ToList();
+            foreach (var servic in ListServicio)
+            {
+                decimal precio = servic.Precio;
+                textBox2.Text = precio.ToString("N2");
+
+            }
         }
     }
 }
