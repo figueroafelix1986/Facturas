@@ -19,9 +19,17 @@ namespace factura.Views
     public partial class AddCotzaServi : Form
     {
         private readonly EmpresaService empresService;
-        private readonly ServiciosService serveService;     
+        private readonly ServiciosService serveService;
+        private readonly CotizacionListService cotizacService;
+
+
 
         List<ServiciosModel> serverList;
+        List<CotizacionModel> cotizaList;
+
+   
+
+
 
         private CotizacionModel cotizacion = new CotizacionModel();
         public AddCotzaServi()
@@ -29,6 +37,7 @@ namespace factura.Views
             InitializeComponent();
             empresService = new EmpresaService();
             serveService = new ServiciosService();
+            cotizacService = new CotizacionListService();
         }
 
         private void AddCotzaServi_Load(object sender, EventArgs e)
@@ -36,7 +45,18 @@ namespace factura.Views
             styleservice();
             ListarCombox();
             viewGrid();
-        
+            textBox4.Text = string.Empty;
+
+
+            cotizaList = cotizacService.GetCotizatoList();
+
+            // Llamar a la función para generar el código de cotización
+            //string codigoGenerado = GenerarCodigoCotizacion(cotizatoList, DateTime.Now);
+            string codigoGenerado = cotizacService.GenerarCodigoCotizacion(cotizaList, DateTime.Now);
+
+            // Utilizar el código generado en tu vista
+            textBox4.Text = codigoGenerado;
+
 
         }
 
