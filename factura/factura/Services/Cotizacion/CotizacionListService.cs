@@ -36,10 +36,14 @@ namespace factura.Services.Cotizacion
         }
 
 
-        public string GenerarCodigoCotizacion(List<CotizacionModel> cotizaciones, DateTime fechaActual)
+        public string GenerarCodigoCotizacion()
         {
+
+            List<CotizacionModel> cotizaciones = GetCotizatoList();
+            DateTime fechaActual=DateTime.Now;
             int consecutivo = 1;
             string codigo;
+
 
             // Obtener el año y mes actual
             string año = fechaActual.Year.ToString();

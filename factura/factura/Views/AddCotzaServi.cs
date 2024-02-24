@@ -25,7 +25,7 @@ namespace factura.Views
 
 
         List<ServiciosModel> serverList;
-        List<CotizacionModel> cotizaList;
+        
 
    
 
@@ -45,16 +45,13 @@ namespace factura.Views
             styleservice();
             ListarCombox();
             viewGrid();
-            textBox4.Text = string.Empty;
-
-
-            cotizaList = cotizacService.GetCotizatoList();
+            //textBox4.Text = string.Empty;      
 
             // Llamar a la función para generar el código de cotización
             //string codigoGenerado = GenerarCodigoCotizacion(cotizatoList, DateTime.Now);
-            string codigoGenerado = cotizacService.GenerarCodigoCotizacion(cotizaList, DateTime.Now);
+            string codigoGenerado = cotizacService.GenerarCodigoCotizacion();
 
-            // Utilizar el código generado en tu vista
+            // Utilizar el código generado
             textBox4.Text = codigoGenerado;
 
 
